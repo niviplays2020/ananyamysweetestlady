@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>For Ananya — Forever Yours, Nivedita</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Lora:ital,wght@0,400;0,500;1,400&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="midnight-mode">
+  <!-- Ambient Floating Embers Canvas -->
+  <canvas id="ember-canvas" aria-hidden="true"></canvas>
+
+  <!-- Subtle Top Navigation & Controls -->
+  <header class="top-bar">
+    <a href="#sanctuary" class="brand-monogram" aria-label="Nivedita and Ananya">
+      N <span class="amp">&amp;</span> A
+    </a>
+
+    <nav class="nav-links" aria-label="Dedication sections">
+      <a href="#truths">Quiet Truths</a>
+      <a href="#letter">The Letter</a>
+      <a href="#promises">Sacred Promises</a>
+      <a href="#heartbeat">Hold My Heart</a>
+    </nav>
+
+    <div class="controls">
+      <button id="audio-toggle" class="pill-btn" type="button" aria-pressed="false" aria-label="Play midnight melody">
+        <span class="pulse-dot"></span>
+        <span id="audio-label">Midnight Melody</span>
+      </button>
+      <button id="theme-toggle" class="pill-btn" type="button" aria-label="Switch lighting mood">
+        <span id="theme-icon">🕯️</span>
+        <span id="theme-label">Dawn</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Sanctuary -->
+    <section id="sanctuary" class="hero-section reveal">
+      <p class="eyebrow">A Quiet Sanctuary Written in Devotion</p>
+      <h1 class="hero-title">
+        For <span class="highlight-name">Ananya</span>,<br />
+        With Every Piece of My Soul
+      </h1>
+      <p class="hero-subtitle">
+        Before you, I thought I knew what it meant to care for someone. Then you walked into my
+        life and turned ordinary breathing into a prayer.
+      </p>
+      <p class="signature-hero">— Forever Yours, Nivedita</p>
+
+      <div class="hero-actions">
+        <a href="#letter" class="primary-cta">Unseal My Heart</a>
+        <a href="#truths" class="secondary-cta">Read the Quiet Truths</a>
+      </div>
+    </section>
+
+    <!-- Section 1: The Quiet Truths of Loving You (3D Flip Cards) -->
+    <section id="truths" class="section-block reveal">
+      <div class="section-header">
+        <span class="section-tag">Chapter I</span>
+        <h2>The Quiet Truths of Loving You</h2>
+        <p>Tap or click each card to turn it over and read what lives beneath my silence.</p>
+      </div>
+
+      <div class="cards-grid" id="cards-grid">
+        <!-- Cards injected cleanly by script.js -->
+      </div>
+    </section>
+
+    <!-- Section 2: Wax-Sealed Midnight Love Letter -->
+    <section id="letter" class="section-block reveal">
+      <div class="section-header">
+        <span class="section-tag">Chapter II</span>
+        <h2>A Letter Kept Safe for You</h2>
+        <p>Break the wax seal to open what my heart has been holding for you.</p>
+      </div>
+
+      <div class="envelope-stage">
+        <div class="letter-envelope" id="letter-envelope">
+          <div class="envelope-cover" id="envelope-cover">
+            <p class="cover-inscription">To the woman who became my home,</p>
+            <h3 class="cover-recipient">My Dearest Ananya</h3>
+
+            <button
+              id="wax-seal-btn"
+              class="wax-seal"
+              type="button"
+              aria-label="Break wax seal to read letter"
+            >
+              <span class="seal-ring">
+                <span class="seal-initials">N&amp;A</span>
+              </span>
+            </button>
+
+            <span class="seal-hint">Touch the wax seal to unseal</span>
+          </div>
+
+          <article class="parchment-letter" id="parchment-letter" aria-hidden="true">
+            <div class="parchment-inner">
+              <p class="letter-date">Written across every heartbeat,</p>
+              <h3 class="letter-salutation">My Beloved Ananya,</h3>
+
+              <p>
+                There are moments when I look at you and feel an ache so gentle and so vast that
+                words feel almost too small to carry it. Loving you has never been loud or
+                borrowed—it has been the quietest, truest certainty I have ever known.
+              </p>
+
+              <p>
+                You have softened corners of my soul I did not even realize were guarded. In a
+                world that constantly rushes, your voice is the place where my spirit slows down,
+                exhales, and remembers what grace feels like. Even in your silences, even on the
+                days you carry unspoken weight, you remain the most breathtaking human being I
+                have ever known.
+              </p>
+
+              <p>
+                If I could give you one gift in this lifetime, it would be the ability to see
+                yourself through my eyes—to witness the warmth you leave behind in every room, the
+                quiet courage in your heart, and the rare, luminous beauty of simply being you.
+              </p>
+
+              <p>
+                No matter how the seasons shift or how far the years carry us, know this without
+                a shadow of doubt: you will never walk alone. My hand, my patience, my loyalty, and
+                every beat of my heart belong to you.
+              </p>
+
+              <div class="letter-closing">
+                <p>Always in your corner, always in awe of you,</p>
+                <p class="handwritten-sign">Nivedita</p>
+              </div>
+
+              <button id="reseal-btn" class="reseal-btn" type="button">
+                Fold &amp; Reseal Letter
+              </button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 3: Constellations of Us (Interactive Sacred Jar) -->
+    <section id="promises" class="section-block reveal">
+      <div class="section-header">
+        <span class="section-tag">Chapter III</span>
+        <h2>Constellations of Us</h2>
+        <p>Choose what your heart needs right now and draw a scroll from the glass jar.</p>
+      </div>
+
+      <div class="jar-tabs" role="tablist">
+        <button
+          class="jar-tab active"
+          data-category="promises"
+          role="tab"
+          aria-selected="true"
+          type="button"
+        >
+          Sacred Promises to You
+        </button>
+        <button
+          class="jar-tab"
+          data-category="whispers"
+          role="tab"
+          aria-selected="false"
+          type="button"
+        >
+          What My Heart Whispers
+        </button>
+      </div>
+
+      <div class="jar-experience">
+        <div class="glass-jar-wrapper">
+          <div class="glass-jar" id="glass-jar" role="button" tabindex="0" aria-label="Draw a scroll from the jar">
+            <div class="jar-lid"></div>
+            <div class="jar-neck"></div>
+            <div class="jar-body">
+              <span class="jar-glow"></span>
+              <span class="scroll-roll roll-1"></span>
+              <span class="scroll-roll roll-2"></span>
+              <span class="scroll-roll roll-3"></span>
+              <span class="scroll-roll roll-4"></span>
+              <span class="scroll-roll roll-5"></span>
+            </div>
+          </div>
+          <button id="draw-scroll-btn" class="primary-cta" type="button">
+            Draw a Scroll
+          </button>
+        </div>
+
+        <div class="drawn-scroll-display" id="drawn-scroll-display" aria-live="polite">
+          <span class="scroll-category-badge" id="scroll-badge">Sacred Promise</span>
+          <blockquote class="scroll-quote" id="scroll-quote">
+            “I promise to be your calm harbor when the world feels too heavy, and your loudest
+            celebration when your dreams come alive.”
+          </blockquote>
+          <p class="scroll-sign">— Nivedita, to Ananya</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Hold My Heart (Interactive Pulse Resonance) -->
+    <section id="heartbeat" class="section-block reveal">
+      <div class="section-header">
+        <span class="section-tag">Chapter IV</span>
+        <h2>Hold My Heart</h2>
+        <p>Press and hold—or tap—the heart below to feel the depth of what you mean to me.</p>
+      </div>
+
+      <div class="heartbeat-sanctuary">
+        <div class="heart-stage" id="heart-stage">
+          <div class="ripple-ring ring-1"></div>
+          <div class="ripple-ring ring-2"></div>
+          <div class="ripple-ring ring-3"></div>
+
+          <button
+            id="heart-core-btn"
+            class="heart-core-btn"
+            type="button"
+            aria-label="Hold or tap heart to unlock deeper confession"
+          >
+            <svg viewBox="0 0 32 29.6" class="heart-svg" aria-hidden="true">
+              <path
+                d="M23.6,0c-3.4,0-6.3,2.7-7.6,5.6C14.7,2.7,11.8,0,8.4,0C3.8,0,0,3.8,0,8.4c0,9.4,9.5,11.9,16,21.2
+                c6.1-9.3,16-12.1,16-21.2C32,3.8,28.2,0,23.6,0z"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <div class="confession-meter">
+          <div class="meter-track">
+            <div class="meter-fill" id="meter-fill"></div>
+          </div>
+          <p class="layer-indicator" id="layer-indicator">Layer 1 of 5 • Touch to deepen</p>
+        </div>
+
+        <div class="confession-box" id="confession-box" aria-live="polite">
+          <h3 id="confession-title">The First Spark</h3>
+          <p id="confession-text">
+            You entered my life softly, yet somehow rearranged every star I used to navigate by.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer-dedication">
+    <p class="footer-script">Ananya &amp; Nivedita</p>
+    <p class="footer-note">Crafted with devotion, vulnerability, and endless love.</p>
+  </footer>
+
+  <audio
+    id="melody-audio"
+    preload="none"
+    src="Sang%20Rahiyo%20%28Official%20Video%29%20Jasleen%20Royal%20ft.%20Ranveer%20Allahbadia%20Ujjwal%20Kashyap%2CNeeraj%20Rajawat.mp3"
+    hidden
+  ></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>

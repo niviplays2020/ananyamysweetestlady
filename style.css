@@ -1,0 +1,1069 @@
+/* ==========================================================================
+   CSS Variables & Theme Palettes (Midnight Candlelight & Soft Dawn)
+   ========================================================================== */
+:root {
+  --bg-primary: #12080d;
+  --bg-secondary: #1d0d15;
+  --bg-card: rgba(34, 15, 24, 0.78);
+  --bg-card-back: #26101b;
+  --parchment-bg: #f6ebd9;
+  --parchment-text: #2e181d;
+  --text-primary: #f7ece4;
+  --text-secondary: #d4b9b2;
+  --accent-gold: #e4b87d;
+  --accent-rose: #d97b8b;
+  --accent-crimson: #8e1c30;
+  --border-subtle: rgba(228, 184, 125, 0.24);
+  --shadow-deep: 0 24px 60px rgba(0, 0, 0, 0.65);
+  --glow-gold: 0 0 32px rgba(228, 184, 125, 0.28);
+
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-body: "Lora", Georgia, serif;
+  --font-script: "Alex Brush", cursive;
+}
+
+body.dawn-mode {
+  --bg-primary: #fbf4ef;
+  --bg-secondary: #f3e4dc;
+  --bg-card: rgba(255, 250, 246, 0.88);
+  --bg-card-back: #f5e5dc;
+  --parchment-bg: #fffaf3;
+  --parchment-text: #361d22;
+  --text-primary: #2d161c;
+  --text-secondary: #68444b;
+  --accent-gold: #b57c3a;
+  --accent-rose: #b84a5e;
+  --accent-crimson: #941f35;
+  --border-subtle: rgba(181, 124, 58, 0.28);
+  --shadow-deep: 0 18px 45px rgba(82, 36, 46, 0.14);
+  --glow-gold: 0 0 28px rgba(181, 124, 58, 0.22);
+}
+
+/* ==========================================================================
+   Base Reset & Layout
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+}
+
+body {
+  background: radial-gradient(circle at 50% 12%, var(--bg-secondary), var(--bg-primary) 72%);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  line-height: 1.75;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  transition: background 0.6s ease, color 0.6s ease;
+}
+
+button,
+a,
+[role="button"] {
+  touch-action: manipulation;
+}
+
+#ember-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+main,
+header,
+footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* ==========================================================================
+   Top Navigation Bar
+   ========================================================================== */
+.top-bar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 5vw;
+  padding-left: max(5vw, env(safe-area-inset-left));
+  padding-right: max(5vw, env(safe-area-inset-right));
+  background: rgba(18, 8, 13, 0.72);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+body.dawn-mode .top-bar {
+  background: rgba(251, 244, 239, 0.82);
+}
+
+.brand-monogram {
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--accent-gold);
+  text-decoration: none;
+}
+
+.brand-monogram .amp {
+  font-family: var(--font-script);
+  font-size: 1.75rem;
+  color: var(--accent-rose);
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.75rem;
+}
+
+.nav-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-size: 1.08rem;
+  letter-spacing: 0.04em;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--accent-gold);
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.95rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-card);
+  color: var(--text-primary);
+  font-family: var(--font-display);
+  font-size: 0.98rem;
+  cursor: pointer;
+  transition: transform 0.25s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pill-btn:hover {
+  border-color: var(--accent-gold);
+  box-shadow: var(--glow-gold);
+  transform: translateY(-1px);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-gold);
+  outline-offset: 4px;
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-secondary);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pill-btn[aria-pressed="true"] .pulse-dot {
+  background: var(--accent-gold);
+  box-shadow: 0 0 10px var(--accent-gold);
+  animation: dotPulse 1.5s infinite;
+}
+
+@keyframes dotPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.45); opacity: 0.65; }
+}
+
+/* ==========================================================================
+   Hero Sanctuary
+   ========================================================================== */
+.hero-section {
+  min-height: 88vh;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 5rem 1.5rem 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.eyebrow {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  font-size: 0.85rem;
+  color: var(--accent-gold);
+  margin-bottom: 1.1rem;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 6vw, 4.7rem);
+  font-weight: 500;
+  line-height: 1.14;
+  margin-bottom: 1.4rem;
+}
+
+.highlight-name {
+  font-style: italic;
+  color: var(--accent-gold);
+  text-shadow: 0 0 28px rgba(228, 184, 125, 0.3);
+}
+
+.hero-subtitle {
+  max-width: 640px;
+  font-size: 1.12rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.6rem;
+}
+
+.signature-hero {
+  font-family: var(--font-script);
+  font-size: 2.3rem;
+  color: var(--accent-rose);
+  margin-bottom: 2.2rem;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.primary-cta,
+.secondary-cta {
+  padding: 0.85rem 1.9rem;
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.primary-cta {
+  background: linear-gradient(135deg, var(--accent-crimson), #5e1120);
+  color: #fff6f0;
+  border: 1px solid var(--accent-gold);
+  box-shadow: var(--glow-gold);
+}
+
+.primary-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(228, 184, 125, 0.35);
+}
+
+.secondary-cta {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
+}
+
+.secondary-cta:hover {
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
+}
+
+/* ==========================================================================
+   Shared Section Layout
+   ========================================================================== */
+.section-block {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 5.5rem 1.5rem;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 660px;
+  margin: 0 auto 3.5rem;
+}
+
+.section-tag {
+  display: inline-block;
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 0.8rem;
+  color: var(--accent-gold);
+  margin-bottom: 0.5rem;
+}
+
+.section-header h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+}
+
+.section-header p {
+  color: var(--text-secondary);
+  font-size: 1.02rem;
+}
+
+/* ==========================================================================
+   Chapter I: Quiet Truths 3D Flip Cards
+   ========================================================================== */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 1.75rem;
+}
+
+.truth-card {
+  perspective: 1200px;
+  height: 290px;
+  cursor: pointer;
+}
+
+.truth-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  transform-style: preserve-3d;
+}
+
+.truth-card.flipped .truth-card-inner {
+  transform: rotateY(180deg);
+}
+
+.truth-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border-radius: 18px;
+  padding: 2rem 1.75rem;
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-deep);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.truth-front {
+  background: var(--bg-card);
+  backdrop-filter: blur(10px);
+}
+
+.truth-roman {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  letter-spacing: 0.25em;
+  color: var(--accent-gold);
+  margin-bottom: 0.8rem;
+}
+
+.truth-front h3 {
+  font-family: var(--font-display);
+  font-size: 1.65rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.flip-prompt {
+  font-size: 0.86rem;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.truth-back {
+  background: var(--bg-card-back);
+  transform: rotateY(180deg);
+  justify-content: space-between;
+}
+
+.truth-back p {
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: var(--text-primary);
+}
+
+.card-sign {
+  font-family: var(--font-script);
+  font-size: 1.65rem;
+  color: var(--accent-gold);
+}
+
+/* ==========================================================================
+   Chapter II: Wax-Sealed Midnight Love Letter
+   ========================================================================== */
+.envelope-stage {
+  max-width: 740px;
+  margin: 0 auto;
+}
+
+.letter-envelope {
+  position: relative;
+  border-radius: 20px;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-card);
+  box-shadow: var(--shadow-deep);
+  overflow: hidden;
+  transition: all 0.6s ease;
+}
+
+.envelope-cover {
+  padding: 4.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: radial-gradient(circle at center, rgba(142, 28, 48, 0.22), transparent 75%);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.letter-envelope.unsealed .envelope-cover {
+  display: none;
+}
+
+.cover-inscription {
+  font-style: italic;
+  color: var(--text-secondary);
+  margin-bottom: 0.4rem;
+}
+
+.cover-recipient {
+  font-family: var(--font-display);
+  font-size: 2.3rem;
+  font-weight: 500;
+  color: var(--accent-gold);
+  margin-bottom: 2.2rem;
+}
+
+.wax-seal {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  border: none;
+  background: radial-gradient(circle at 32% 30%, #b82942, #6b0f20 75%);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.65), inset 0 2px 6px rgba(255, 215, 180, 0.4);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 1.2rem;
+}
+
+.wax-seal:hover {
+  transform: scale(1.08) rotate(-4deg);
+  box-shadow: 0 14px 36px rgba(228, 184, 125, 0.35), inset 0 2px 8px rgba(255, 220, 190, 0.5);
+}
+
+.seal-ring {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(244, 206, 152, 0.65);
+  display: grid;
+  place-items: center;
+}
+
+.seal-initials {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #f6d5a3;
+  letter-spacing: 0.05em;
+}
+
+.seal-hint {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.06em;
+}
+
+.parchment-letter {
+  display: none;
+  background: var(--parchment-bg);
+  color: var(--parchment-text);
+  padding: clamp(2rem, 5vw, 3.8rem);
+  animation: unfoldPaper 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.letter-envelope.unsealed .parchment-letter {
+  display: block;
+}
+
+@keyframes unfoldPaper {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.letter-date {
+  font-style: italic;
+  font-size: 0.95rem;
+  opacity: 0.75;
+  margin-bottom: 1rem;
+}
+
+.letter-salutation {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 600;
+  color: #7c192b;
+  margin-bottom: 1.3rem;
+}
+
+.parchment-inner p {
+  margin-bottom: 1.25rem;
+  font-size: 1.05rem;
+}
+
+.letter-closing {
+  margin-top: 2rem;
+}
+
+.handwritten-sign {
+  font-family: var(--font-script);
+  font-size: 2.6rem;
+  color: #7c192b;
+  margin-top: 0.25rem;
+}
+
+.reseal-btn {
+  margin-top: 1.5rem;
+  padding: 0.55rem 1.3rem;
+  border-radius: 999px;
+  border: 1px solid rgba(124, 25, 43, 0.35);
+  background: transparent;
+  color: #7c192b;
+  font-family: var(--font-display);
+  font-size: 0.98rem;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.reseal-btn:hover {
+  background: #7c192b;
+  color: #fff8f2;
+}
+
+/* ==========================================================================
+   Chapter III: Constellations of Us (Glass Jar)
+   ========================================================================== */
+.jar-tabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-bottom: 3rem;
+}
+
+.jar-tab {
+  padding: 0.65rem 1.4rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.jar-tab.active,
+.jar-tab:hover {
+  border-color: var(--accent-gold);
+  color: var(--text-primary);
+  box-shadow: var(--glow-gold);
+}
+
+.jar-experience {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  align-items: center;
+  gap: 2.5rem;
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.glass-jar-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.4rem;
+}
+
+.glass-jar {
+  position: relative;
+  width: 170px;
+  height: 225px;
+  cursor: pointer;
+  transition: transform 0.35s ease;
+}
+
+.glass-jar:hover {
+  transform: translateY(-5px) rotate(-1.5deg);
+}
+
+.glass-jar.shake {
+  animation: jarShake 0.55s ease;
+}
+
+@keyframes jarShake {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-6deg); }
+  50% { transform: rotate(6deg); }
+  75% { transform: rotate(-3deg); }
+}
+
+.jar-lid {
+  width: 104px;
+  height: 18px;
+  margin: 0 auto;
+  border-radius: 6px 6px 2px 2px;
+  background: linear-gradient(90deg, #9b6c34, #e4b87d, #9b6c34);
+}
+
+.jar-neck {
+  width: 92px;
+  height: 14px;
+  margin: 0 auto;
+  border-left: 2px solid var(--border-subtle);
+  border-right: 2px solid var(--border-subtle);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.jar-body {
+  position: relative;
+  width: 100%;
+  height: 185px;
+  border-radius: 36px 36px 28px 28px;
+  border: 2px solid rgba(228, 184, 125, 0.42);
+  background: radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.14), rgba(228, 184, 125, 0.05));
+  box-shadow: inset 0 0 28px rgba(228, 184, 125, 0.18), var(--shadow-deep);
+  overflow: hidden;
+}
+
+.jar-glow {
+  position: absolute;
+  inset: 25%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(228, 184, 125, 0.42), transparent 70%);
+  filter: blur(10px);
+}
+
+.scroll-roll {
+  position: absolute;
+  width: 54px;
+  height: 16px;
+  border-radius: 8px;
+  background: linear-gradient(180deg, #f7e6c9, #d8b88c);
+  border: 1px solid #9c7444;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.35);
+}
+
+.scroll-roll::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  transform: translateX(-50%);
+  background: var(--accent-crimson);
+}
+
+.roll-1 { bottom: 18px; left: 22px; transform: rotate(-14deg); }
+.roll-2 { bottom: 20px; right: 20px; transform: rotate(18deg); }
+.roll-3 { bottom: 42px; left: 52px; transform: rotate(6deg); }
+.roll-4 { bottom: 64px; left: 26px; transform: rotate(-22deg); }
+.roll-5 { bottom: 66px; right: 28px; transform: rotate(24deg); }
+
+.drawn-scroll-display {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  padding: 2.4rem 2rem;
+  box-shadow: var(--shadow-deep);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.drawn-scroll-display.updating {
+  opacity: 0.25;
+  transform: translateY(6px);
+}
+
+.scroll-category-badge {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-gold);
+  margin-bottom: 1rem;
+}
+
+.scroll-quote {
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+  font-style: italic;
+  line-height: 1.5;
+  margin-bottom: 1.2rem;
+}
+
+.scroll-sign {
+  font-family: var(--font-script);
+  font-size: 1.8rem;
+  color: var(--accent-rose);
+}
+
+/* ==========================================================================
+   Chapter IV: Hold My Heart (Pulse Resonance)
+   ========================================================================== */
+.heartbeat-sanctuary {
+  max-width: 660px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.heart-stage {
+  position: relative;
+  width: 210px;
+  height: 210px;
+  margin: 0 auto 2rem;
+  display: grid;
+  place-items: center;
+}
+
+.ripple-ring {
+  position: absolute;
+  inset: 20px;
+  border-radius: 50%;
+  border: 1.5px solid var(--accent-gold);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.heart-stage.pulsing .ring-1 { animation: rippleOut 1.8s ease-out infinite; }
+.heart-stage.pulsing .ring-2 { animation: rippleOut 1.8s ease-out 0.6s infinite; }
+.heart-stage.pulsing .ring-3 { animation: rippleOut 1.8s ease-out 1.2s infinite; }
+
+@keyframes rippleOut {
+  0% { transform: scale(0.75); opacity: 0.75; }
+  100% { transform: scale(1.75); opacity: 0; }
+}
+
+.heart-core-btn {
+  position: relative;
+  z-index: 2;
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  border: 1px solid var(--border-subtle);
+  background: radial-gradient(circle at 35% 30%, rgba(217, 123, 139, 0.25), var(--bg-card));
+  box-shadow: var(--glow-gold), var(--shadow-deep);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: transform 0.2s ease;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.heart-core-btn:active,
+.heart-core-btn.holding {
+  transform: scale(0.94);
+}
+
+.heart-svg {
+  width: 52px;
+  height: 52px;
+  fill: var(--accent-crimson);
+  filter: drop-shadow(0 0 12px rgba(217, 123, 139, 0.6));
+  animation: heartbeatIdle 2.2s ease-in-out infinite;
+}
+
+.heart-stage.pulsing .heart-svg {
+  animation: heartbeatFast 0.75s ease-in-out infinite;
+}
+
+@keyframes heartbeatIdle {
+  0%, 100% { transform: scale(1); }
+  14% { transform: scale(1.14); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.09); }
+  70% { transform: scale(1); }
+}
+
+@keyframes heartbeatFast {
+  0%, 100% { transform: scale(1.05); }
+  50% { transform: scale(1.26); }
+}
+
+.confession-meter {
+  max-width: 360px;
+  margin: 0 auto 2rem;
+}
+
+.meter-track {
+  width: 100%;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(228, 184, 125, 0.16);
+  overflow: hidden;
+  margin-bottom: 0.65rem;
+}
+
+.meter-fill {
+  width: 20%;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent-rose), var(--accent-gold));
+  transition: width 0.45s ease;
+}
+
+.layer-indicator {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  color: var(--accent-gold);
+}
+
+.confession-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  padding: 2.2rem 1.8rem;
+  box-shadow: var(--shadow-deep);
+}
+
+.confession-box h3 {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 500;
+  color: var(--accent-gold);
+  margin-bottom: 0.75rem;
+}
+
+.confession-box p {
+  font-size: 1.05rem;
+  color: var(--text-primary);
+}
+
+/* ==========================================================================
+   Footer & Scroll Reveal
+   ========================================================================== */
+.footer-dedication {
+  text-align: center;
+  padding: 3.5rem 1.5rem 4.5rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.footer-script {
+  font-family: var(--font-script);
+  font-size: 2.4rem;
+  color: var(--accent-gold);
+}
+
+.footer-note {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.85s ease, transform 0.85s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   Responsive Adjustments
+   ========================================================================== */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+
+  .top-bar {
+    padding-inline: 1rem;
+  }
+
+  .controls {
+    gap: 0.4rem;
+  }
+
+  .pill-btn {
+    padding-inline: 0.72rem;
+  }
+
+  .jar-experience {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 980px) {
+  .top-bar {
+    padding-inline: 1.25rem;
+  }
+
+  .nav-links {
+    gap: 0.75rem;
+  }
+
+  .nav-links a {
+    font-size: 0.92rem;
+  }
+
+  .controls {
+    gap: 0.4rem;
+  }
+
+  .pill-btn {
+    padding-inline: 0.65rem;
+  }
+
+  #audio-label {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand-monogram {
+    font-size: 1.25rem;
+  }
+
+  #audio-label {
+    display: none;
+  }
+
+  #theme-label {
+    display: none;
+  }
+
+  .hero-section {
+    padding-inline: 1rem;
+  }
+
+  .hero-actions {
+    width: 100%;
+  }
+
+  .primary-cta,
+  .secondary-cta {
+    width: 100%;
+  }
+
+  .section-block {
+    padding-inline: 1rem;
+  }
+
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .envelope-cover {
+    padding-inline: 1rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .top-bar {
+    gap: 0.45rem;
+  }
+
+  .controls {
+    margin-left: auto;
+  }
+
+  .pill-btn {
+    min-width: 44px;
+    min-height: 44px;
+    justify-content: center;
+  }
+
+  .truth-card {
+    height: 300px;
+  }
+
+  .truth-face {
+    padding-inline: 1.1rem;
+  }
+
+  .jar-tabs {
+    gap: 0.55rem;
+  }
+
+  .jar-tab {
+    width: 100%;
+  }
+
+  .drawn-scroll-display,
+  .confession-box {
+    padding-inline: 1.1rem;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 500px) {
+  .top-bar {
+    position: relative;
+  }
+
+  .hero-section {
+    min-height: 0;
+    padding-block: 3rem 2.5rem;
+  }
+
+  .section-block {
+    padding-block: 3.5rem;
+  }
+
+  .heart-stage {
+    width: 180px;
+    height: 180px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
